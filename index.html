@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #fff0f5;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #ff7eb9, #ff65a3);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(255, 101, 163, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            padding: 0 20px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 3rem;
+        }
+        
+        .photo-container {
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(255, 101, 163, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            height: 250px;
+            transform: scale(0.95);
+        }
+        
+        .photo-container:hover {
+            transform: translateY(-10px) scale(1);
+            box-shadow: 0 15px 30px rgba(255, 101, 163, 0.3);
+        }
+        
+        .photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .photo-container:hover .photo {
+            transform: scale(1.1);
+        }
+        
+        .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 101, 163, 0.8);
+            color: white;
+            padding: 12px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            font-weight: 500;
+            text-align: center;
+        }
+        
+        .photo-container:hover .caption {
+            opacity: 1;
+        }
+        
+        .message {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(255, 101, 163, 0.2);
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .message::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 192, 203, 0.2);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .message::after {
+            content: '';
+            position: absolute;
+            bottom: -70px;
+            right: -70px;
+            width: 140px;
+            height: 140px;
+            background: rgba(255, 182, 193, 0.15);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .message h2 {
+            color: #ff65a3;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+            font-size: 2rem;
+        }
+        
+        .message p {
+            position: relative;
+            z-index: 1;
+            font-size: 1.1rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background: linear-gradient(135deg, #ff7eb9, #ff65a3);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .heart {
+            color: #ffffff;
+            font-size: 1.5rem;
+            display: inline-block;
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            animation: float 10s linear infinite;
+            z-index: 0;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-1000%) rotate(720deg); opacity: 0; }
+        }
+        
+        .kiss {
+            display: inline-block;
+            font-size: 1.5rem;
+            color: #ff65a3;
+            animation: kiss 1s ease infinite;
+            margin: 0 5px;
+        }
+        
+        @keyframes kiss {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        
+        .love-quote {
+            font-style: italic;
+            color: #ff65a3;
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 1.2rem;
+        }
+        
+        .polaroid {
+            background: white;
+            padding: 15px 15px 40px 15px;
+            transform: rotate(0deg);
+            transition: all 0.5s ease;
+        }
+        
+        .polaroid:nth-child(odd):hover {
+            transform: rotate(-3deg) scale(1.05);
+        }
+        
+        .polaroid:nth-child(even):hover {
+            transform: rotate(3deg) scale(1.05);
+        }
+        
+        .countdown {
+            font-size: 1.5rem;
+            color: white;
+            margin-top: 1rem;
+        }
+        
+        .love-button {
+            background: white;
+            color: #ff65a3;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .love-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .ribbon {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
+        }
+        
+        .ribbon-content {
+            position: absolute;
+            top: 30px;
+            right: -50px;
+            background: #ff4081;
+            color: white;
+            padding: 10px 40px;
+            transform: rotate(45deg);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .photo-container {
+                height: 180px;
+            }
+            
+            .ribbon {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .ribbon-content {
+                top: 20px;
+                right: -40px;
+                padding: 5px 30px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="floating-hearts" id="header-hearts"></div>
+        <h1 class="animate__animated animate__heartBeat">Happy Birthday My Love!</h1>
+        <p class="subtitle animate__animated animate__fadeIn">To the most amazing woman who stole my heart</p>
+        <div class="countdown" id="countdown"></div>
+        <button class="love-button animate__animated animate__pulse animate__infinite" id="love-btn">Send Love</button>
+        <div class="ribbon">
+            <div class="ribbon-content">I Love You!</div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="intro animate__animated animate__fadeIn">
+            <p>My darling, today we celebrate the most special day - the day you came into this world and eventually into my life. 
+            Every moment with you feels like a blessing <span class="kiss">💋</span> Thank you for filling my days with love, laughter, and endless joy.</p>
+        </div>
+        
+        <div class="love-quote animate__animated animate__fadeIn">
+            "In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine." — Maya Angelou
+        </div>
+        
+        <div class="gallery">
+            <!-- Replace the placeholder images with your actual photos -->
+            <div class="photo-container polaroid animate__animated animate__zoomIn">
+                <img src="/api/placeholder/400/320" alt="My Love" class="photo">
+                <div class="caption">The day I fell in love with your smile <span class="heart">♥</span></div>
+            </div>
+            <div class="photo-container polaroid animate__animated animate__zoomIn" style="animation-delay: 0.2s">
+                <img src="/api/placeholder/400/320" alt="My Love" class="photo">
+                <div class="caption">Our magical summer together <span class="heart">♥</span></div>
+            </div>
+            <div class="photo-container polaroid animate__animated animate__zoomIn" style="animation-delay: 0.4s">
+                <img src="/api/placeholder/400/320" alt="My Love" class="photo">
+                <div class="caption">Your beautiful eyes captivate me <span class="heart">♥</span></div>
+            </div>
+            <div class="photo-container polaroid animate__animated animate__zoomIn" style="animation-delay: 0.6s">
+                <img src="/api/placeholder/400/320" alt="My Love" class="photo">
+                <div class="caption">Our romantic hike to the mountains <span class="heart">♥</span></div>
+            </div>
+            <div class="photo-container polaroid animate__animated animate__zoomIn" style="animation-delay: 0.8s">
+                <img src="/api/placeholder/400/320" alt="My Love" class="photo">
+                <div class="caption">Cuddles during movie night <span class="kiss">💋</span></div>
+            </div>
+            <div class="photo-container polaroid animate__animated animate__zoomIn" style="animation-delay: 1s">
+                <img src="/api/placeholder/400/320" alt="My Love" class="photo">
+                <div class="caption">Candlelit dinner under the stars <span class="heart">♥</span></div>
+            </div>
+            <div class="photo-container polaroid animate__animated animate__zoomIn" style="animation-delay: 1.2s">
+                <img src="/api/placeholder/400/320" alt="My Love" class="photo">
+                <div class="caption">Dancing in the rain with you <span class="kiss">💋</span></div>
+            </div>
+            <div class="photo-container polaroid animate__animated animate__zoomIn" style="animation-delay: 1.4s">
+                <img src="/api/placeholder/400/320" alt="My Love" class="photo">
+                <div class="caption">Beach sunset kisses <span class="kiss">💋</span></div>
+            </div>
+        </div>
+        
+        <div class="message animate__animated animate__fadeIn">
+            <h2>My Love Letter To You <span class="heart">♥</span></h2>
+            <p>
+                My darling, my love, my everything,
+            </p>
+            <br>
+            <p>
+                On your special day, I want to shower you with all the love and kisses you deserve <span class="kiss">💋</span> 
+                From the moment you entered my life, everything changed. Colors became brighter, music sounded sweeter, and my heart found its home.
+            </p>
+            <br>
+            <p>
+                Your smile lights up my darkest days. Your laugh is my favorite melody. Your touch sends shivers down my spine. 
+                I treasure every moment we share - from our passionate kisses <span class="kiss">💋</span> to our quiet cuddles, 
+                from our adventurous dates to our cozy nights in.
+            </p>
+            <br>
+            <p>
+                I love the way you scrunch your nose when you laugh. I love how you dance when nobody's watching. 
+                I love how your eyes sparkle when you talk about your passions. I love every single thing about you - 
+                your strengths, your flaws, your dreams, and your fears. I love you completely and unconditionally.
+            </p>
+            <br>
+            <p>
+                As you blow out your candles today, know that my wish is to make all your wishes come true. 
+                I promise to stand by your side, to hold your hand, to wipe your tears, and to celebrate your victories. 
+                I promise to love you more and more with each passing day.
+            </p>
+            <br>
+            <p>
+                Happy Birthday, my love <span class="heart">♥</span> Here's to
